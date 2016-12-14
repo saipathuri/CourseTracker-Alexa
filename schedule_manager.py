@@ -73,6 +73,33 @@ def add_assignment(student_id, assigntment_type, assignment_name, due_date):
 		assignment_list[assignment_name] = due_date
 		student_all_assignments[assignment_name] = assigntment_info
 
+
+"""adds multiple assignments for a student in a set interval
+args
+	student_id: unique id to add assigment under that student
+	assignment_type: one of the 5 types declared in schedule namedtuple
+	assignment_name: name of assignment from student
+	due_date: due date given by student
+returns
+	nothing
+exceptions
+	assignment_already_exists: if assignment with same name exists for the student
+"""		
+def add_assignment_interval(student_id, assigntment_type, assignment_name, due_date, interval, end_date):
+    assignment_list = master_list[student_id][0][tuple_map[assigntment_type]]
+        student_all_assignments = master_list[student_id][1]
+        
+        assigntment_info = [False, due_date]
+        
+        if(assignment_list.has_key(assignment_name)):
+            raise my_exceptions.assignment_already_exists
+        else:
+            for x in range (0, end_date, interval):
+                assignment_list[assignment_name] = due_date + x
+                    student_all_assignments[assignment_name] = assigntment_info
+                    sort_by_date(student_id, assigntment_type)
+                    sort_by_date(student_id, 'all')
+		
 """provdes assignment due date and completion information
 args
 	student_id: unique id to add assigment under that student
