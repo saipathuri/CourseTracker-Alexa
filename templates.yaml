@@ -1,0 +1,9 @@
+welcome_new_user: "Welcome to the Course Tracker. I am setting up your account now. You can add, remove, and find what assignment to work on. What would you like to do?"
+
+welcome_returning_user: "Welcome back, how can I help you?"
+
+added_assignment: "{{ name }} {{ type }} on {{ date }} has been added. Anything else?"
+
+next_assignment: "Your next assignment is {{ name }} due at {{ date }}. Anything else?"
+
+stop: "Good bye, good luck"
