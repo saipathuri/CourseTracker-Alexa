@@ -28,4 +28,4 @@ unknown_args_next_name: "I didn't understand the name of the assignment to find.
 
 assignment_exists: "You've already added this assignment before."
 
-help: "You can add an assignment, mark an assignment as complete or incomplete, ask me what study for next, or ask me what type of assignment is coming up. Supported assignment types are test, quiz, lab, essay and homework. What can I do for you?"
+help: "You can add an assignment, mark an assignment as complete or incomplete, ask me what to study for next, or ask me what type of assignment is coming up. Supported assignment types are test, quiz, lab, essay and homework. What can I do for you?"

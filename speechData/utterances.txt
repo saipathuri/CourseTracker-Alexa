@@ -32,6 +32,8 @@ AddIntent add {Type} {Date}
 AddIntent add {Name} {Date}
 AddIntent add {Name} {Type} on {Date}
 AddIntent add {Name} {Type} for {Date}
+AddIntent add my {Name} {Type} on {Date}
+AddIntent add my {Name} {Type} for {Date}
 AddIntent {Name}
 AddIntent {Type}
 AddIntent {Date}
