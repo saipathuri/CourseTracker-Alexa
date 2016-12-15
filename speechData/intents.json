@@ -1,0 +1,76 @@
+{
+  "intents": [
+    {
+      "intent": "AddIntent",
+      "slots": [
+        {
+          "name": "Type",
+          "type": "LIST_OF_ASSIGNMENTS"
+        },
+        {
+          "name": "Name",
+          "type": "LIST_OF_SUBJECTS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "NextAssignmentIntent"
+    },
+    {
+      "intent": "NextTypeIntent",
+      "slots": [
+        {"name": "Type",
+         "type": "LIST_OF_ASSIGNMENTS"}
+      ]
+    },
+    {
+      "intent": "CompletedAssignmentIntent",
+      "slots": [
+        {
+          "name": "Type",
+          "type": "LIST_OF_ASSIGNMENTS"
+        },
+        {
+          "name": "Name",
+          "type": "LIST_OF_SUBJECTS"
+        }
+      ]
+    },
+    {
+      "intent": "NotCompletedAssignmentIntent",
+      "slots": [
+        {
+          "name": "Type",
+          "type": "LIST_OF_ASSIGNMENTS"
+        },
+        {
+          "name": "Name",
+          "type": "LIST_OF_SUBJECTS"
+        }
+      ]
+    },
+    {
+      "intent": "NextNameIntent",
+      "slots": [
+        {
+          "name": "Type",
+          "type": "LIST_OF_ASSIGNMENTS"
+        },
+        {
+          "name": "Name",
+          "type": "LIST_OF_SUBJECTS"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

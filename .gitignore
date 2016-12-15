@@ -1,5 +1,5 @@
 *.pyc
-*.json
+pip-selfcheck.json
 bin/
 include/
 lib/

@@ -1,5 +1,6 @@
 from collections import namedtuple
 from datetime import date
+import datetime
 import my_exceptions
 
 """
@@ -59,7 +60,7 @@ args
 returns
 	nothing
 exceptions
-	assignment_already_exists: if assignment with same name exists for the student
+	assignment_already_exists: if assignment with same name and date exists for the student
 """
 def add_assignment(student_id, assigntment_type, assignment_name, due_date):
 	assignment_list = master_list[student_id][0][tuple_map[assigntment_type]]
@@ -68,7 +69,8 @@ def add_assignment(student_id, assigntment_type, assignment_name, due_date):
 	assigntment_info = [False, due_date]
 
 	if(assignment_list.has_key(assignment_name)):
-		raise my_exceptions.assignment_already_exists
+		if(assignment_list[assignment_name] == due_date):
+			raise my_exceptions.assignment_already_exists
 	else:
 		assignment_list[assignment_name] = due_date
 		student_all_assignments[assignment_name] = assigntment_info
@@ -82,13 +84,16 @@ returns
 		0 index: boolean indicating completion of assignment
 		1 index: date object containing due date
 exceptions:
-	assignment_not_found: if the assignment with given name is not found for student
+	assignment_not_found: if the assignment with given name is not found for student or has already passed
 """
 def find_assignment(student_id, assignment_name):
+	today = date.today()
+	student_all_assignments = master_list[student_id][1]
 	assignment = None
-	for i in master_list[student_id][1]:
+	for i in student_all_assignments:
 		if i == assignment_name:
-			assignment = master_list[student_id][1][i]
+			if student_all_assignments[i][1] > today:
+				assignment = student_all_assignments[i]
 
 	if(assignment == None):
 		raise my_exceptions.assignment_not_found
@@ -119,9 +124,13 @@ exceptions
 	none
 """
 def mark_completed(student_id, assignment_name):
-	assignment = find_assignment(student_id, assignment_name)
+	try:
+		assignment = find_assignment(student_id, assignment_name)
+	except:
+		return False
 
 	assignment[0] = True
+	return True
 
 """marks assignment as not completed
 args
@@ -133,9 +142,13 @@ exceptions
 	none
 """
 def mark_not_completed(student_id, assignment_name):
-	assignment = find_assignment(student_id, assignment_name)
+	try:
+		assignment = find_assignment(student_id, assignment_name)
+	except:
+		return False
 
 	assignment[0] = False
+	return True
 
 """sorts a certain dictionary by date
 args
@@ -168,6 +181,12 @@ def sort_by_date(student_id, list_type):
 		return _sort_for_all(student_all_assignments)
 
 """sorts all assignments part of student data
+args
+	dict: dictionary to be sorted
+returns
+	sorted array of tuples, sorted by date
+exceptions
+	none
 """
 def _sort_for_all(dict):
 	if(len(dict) == 0):
@@ -177,6 +196,12 @@ def _sort_for_all(dict):
 	return sorted_dict
 
 """sorts certain type of assignment
+args
+	dict: dictionary to be sorted
+returns
+	sorted array of tuples, sorted by date
+exceptions
+	none
 """
 def _sort_kind(dict):
 	if(len(dict) == 0):
@@ -184,15 +209,46 @@ def _sort_kind(dict):
 
 	sorted_dict = sorted(dict.items(), key = lambda x: x[1])
 	return sorted_dict
-"""
-TODO: support for certain type of assignment
+"""finds the next assignment that can be completed
+args:
+	student_id: unique student id
+	list_type: which list to search for next assignment. can be 'all' or any assignment type defined in schedule namedtuple
+returns
+	None if no suitable assignment found
+	If suitable assignment found, returns a tuple of the assignment
+exceptions
+	none
 """
 def find_next_assignment(student_id, list_type):
+	today = date.today()
 	if list_type == 'all':
-		sorted_assignments = sort_by_date(student_id, list_type)
+		try:
+			sorted_assignments = sort_by_date(student_id, list_type)
+		except:
+			return None
+
 		for assignment in sorted_assignments:
 			if assignment[1][0] == False:
-				return assignment
+				# assignment_date = assignment[1][1]
+				# assignment_date = datetime.datetime.strptime(assignment_date, '%Y-%m-%d')
+				# assignment_date = datetime.datetime.date(assignment_date)
+				if assignment[1][1] > today:
+					return assignment
+	else:
+		try:
+			sorted_assignments = sort_by_date(student_id, list_type)
+		except:
+			return None
+
+		for assignment in range(len(sorted_assignments)):
+			# assignment_date = sorted_assignments[assignment][1]
+			# assignment_date = datetime.datetime.strptime(assignment_date, '%Y-%m-%d')
+			# assignment_date = datetime.datetime.date(assignment_date)
+			if sorted_assignments[assignment][1] > today:
+				return sorted_assignments[assignment]
+
+	return None
+
 
 def print_user_list():
 	for i in master_list:
@@ -202,11 +258,11 @@ def print_user_list():
 TESTING
 """
 
-create_student('test_student')
-add_assignment('test_student', 'test', 'MAJOR EXAM 1', date(2016, 12, 17))
-add_assignment('test_student', 'test', 'MAJOR EXAM 2', date(2016, 12, 13))
-mark_completed('test_student', 'MAJOR EXAM 1')
-add_assignment('test_student', 'test', 'MAJOR EXAM 3', date(2016, 12, 14))
-mark_completed('test_student', 'MAJOR EXAM 3')
-add_assignment('test_student', 'test', 'MAJOR EXAM 4', date(2016, 12, 16))
-add_assignment('test_student', 'quiz', 'MINOR QUIZ 1', date(2016, 12, 18))
+amazon_test_id = "amzn1.ask.account.AGNKSQ2PSWPED6TFTUA22TEJ66FZI3K4ZYBTXLQITHRYSN5N472Q7QUQM3P7TKJYVPK4JYGG3TNN74VRQITHGB7YH33ZAIVMLKGJVGLHCJ2EZDC2VA6DHB5624FSUMVHMGMROXOC7C46ZJVGAAICK7SVSUEBMF2VOKZ7ICLAMEQPAQHKRTUKIH2NTA5XRG6RO7CR2I75C7LEOTA"
+create_student(amazon_test_id)
+add_assignment(amazon_test_id, 'test', 'calculus test', date(2016, 12, 18))
+add_assignment(amazon_test_id, 'test', 'calculus test', date(2016, 12, 17))
+add_assignment(amazon_test_id, 'test', 'physics test', date(2016, 12, 20))
+add_assignment(amazon_test_id, 'test', 'history test', date(2016, 12, 25))
+add_assignment(amazon_test_id, 'test', 'mechanics test', date(2016, 12, 16))
+add_assignment(amazon_test_id, 'quiz', 'algebra test', date(2016, 12, 18))

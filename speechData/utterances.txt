@@ -1,0 +1,69 @@
+NextAssignmentIntent what should i work on next
+NextAssignmentIntent next assignment
+NextAssignmentIntent what is due next
+NextAssignmentIntent what should i do next
+NextAssignmentIntent next
+
+NextTypeIntent next {Type}
+NextTypeIntent when is next {Type}
+NextTypeIntent when next {Type}
+NextTypeIntent when is my next {Type}
+NextTypeIntent when is my next {Type} due
+NextTypeIntent {Type} due
+
+NextNameIntent next {Name} {Type}
+NextNameIntent when is next {Name} {Type}
+NextNameIntent when next {Name} {Type}
+NextNameIntent when is my next {Name} {Type}
+NextNameIntent when is my next {Name} {Type} due
+NextNameIntent {Name} {Type} due
+
+AddIntent add {Name} {Type}
+AddIntent add {Type} {Date}
+AddIntent add {Name} {Date}
+AddIntent add {Name} {Type} on {Date}
+AddIntent {Name}
+AddIntent {Type}
+AddIntent {Date}
+AddIntent i have {Name} {Type} on {Date}
+AddIntent i have an {Name} {Type} on {Date}
+AddIntent {Name} {Type} on {Date}
+AddIntent {Name} {Type} {Date}
+
+CompletedAssignmentIntent mark {Name} {Type} as complete
+CompletedAssignmentIntent mark {Name} {Type} as completed
+CompletedAssignmentIntent {Name} {Type} complete
+CompletedAssignmentIntent {Name} {Type} completed
+CompletedAssignmentIntent mark {Name} {Type} as done
+CompletedAssignmentIntent {Name} {Type} is done
+CompletedAssignmentIntent mark {Name} as complete
+CompletedAssignmentIntent mark {Name} as completed
+CompletedAssignmentIntent {Name} complete
+CompletedAssignmentIntent {Name} completed
+CompletedAssignmentIntent mark {Name} as done
+CompletedAssignmentIntent {Name} is done
+
+NotCompletedAssignmentIntent mark {Name} {Type} as not complete
+NotCompletedAssignmentIntent mark {Name} {Type} as not completed
+NotCompletedAssignmentIntent {Name} {Type} not complete
+NotCompletedAssignmentIntent {Name} {Type} not completed
+NotCompletedAssignmentIntent mark {Name} {Type} as not done
+NotCompletedAssignmentIntent {Name} {Type} is  not done
+NotCompletedAssignmentIntent mark {Name} as not complete
+NotCompletedAssignmentIntent mark {Name} as not completed
+NotCompletedAssignmentIntent {Name} not complete
+NotCompletedAssignmentIntent {Name} not completed
+NotCompletedAssignmentIntent mark {Name} as not done
+NotCompletedAssignmentIntent {Name} is  not done
+
+AMAZON.StopIntent bye
+AMAZON.StopIntent done
+AMAZON.StopIntent i am done
+AMAZON.StopIntent no
+
+AMAZON.CancelIntent stop
+AMAZON.CancelIntent cancel
+AMAZON.CancelIntent end
+AMAZON.CancelIntent never mind
+AMAZON.CancelIntent nah
+AMAZON.CancelIntent cya
