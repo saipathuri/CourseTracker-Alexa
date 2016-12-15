@@ -10,9 +10,6 @@ ask = Ask(app, "/")
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-@app.route('/debug')
-def debug():
-    return str(manager.master_list)
 @ask.launch
 def launch_skill():
     welcome_msg = render_template('welcome_new_user')
@@ -20,7 +17,6 @@ def launch_skill():
 
     if manager.master_list.has_key(userid):
         welcome_msg = render_template('welcome_returning_user')
-        print('returning user')
     else:
         manager.create_student(userid)
 
@@ -98,8 +94,6 @@ def next_type_assignment(assignment_type):
         assignment_type = 'essay'
 
     assignment_to_do = manager.find_next_assignment(userid, assignment_type)
-    print("\n\n\n\n\n ass:")
-    print assignment_to_do
 
     if(assignment_to_do):
         Name = assignment_to_do[0]
@@ -220,7 +214,6 @@ def next_name_assignment(assignment_type, Name):
     try:
         assignment = manager.find_assignment(userid, assignment_name)
     except Exception as e:
-        print e
         return statement("I couldn't find an assignment with that name")
 
     return statement(assignment_name + " is scheduled for " + str(assignment[1]))
@@ -250,4 +243,4 @@ def isEssay(name):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
