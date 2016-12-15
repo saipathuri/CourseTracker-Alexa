@@ -1,6 +1,9 @@
 class student_already_exists(Exception):
     """
     """
+class student_does_not_exist(Exception):
+    """
+    """
 class assignment_already_exists(Exception):
 	"""
 	"""

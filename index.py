@@ -1,5 +1,6 @@
 import os
 import logging
+import my_exceptions
 from random import randint
 import schedule_manager as manager
 from flask import Flask, render_template
@@ -62,8 +63,11 @@ def add_assignment(assignment_type, Name, Date):
     
     try:
         manager.add_assignment(userid, type_to_add, name_to_add +' '+ type_to_add, date_to_add)
-    except:
+    except my_exceptions.assignment_already_exists:
         return statement(render_template('assignment_exists'))
+    except my_exceptions.student_does_not_exist:
+        manager.create_student(userid)
+        return statement("You are not set up in the system. I am adding you now. Please try your request again.")
 
     return response
 
@@ -243,4 +247,4 @@ def isEssay(name):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug = True)

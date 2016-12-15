@@ -50,6 +50,7 @@ def create_student(student_id):
 		raise my_exceptions.student_already_exists
 	else:
 		master_list[student_id] = [student_schedule, student_all_assignments]
+		print master_list
 
 """adds assignment for a student
 args
@@ -62,18 +63,23 @@ returns
 exceptions
 	assignment_already_exists: if assignment with same name and date exists for the student
 """
-def add_assignment(student_id, assigntment_type, assignment_name, due_date):
-	assignment_list = master_list[student_id][0][tuple_map[assigntment_type]]
+def add_assignment(student_id, assignment_type, assignment_name, due_date):
+	print master_list
+	
+	if(not master_list.has_key(student_id)):
+		raise my_exceptions.student_does_not_exist
+
+	assignment_list = master_list[student_id][0][tuple_map[assignment_type]]
 	student_all_assignments = master_list[student_id][1]
 
-	assigntment_info = [False, due_date]
+	assignment_info = [False, due_date]
 
 	if(assignment_list.has_key(assignment_name)):
 		if(assignment_list[assignment_name] == due_date):
 			raise my_exceptions.assignment_already_exists
 	else:
 		assignment_list[assignment_name] = due_date
-		student_all_assignments[assignment_name] = assigntment_info
+		student_all_assignments[assignment_name] = assignment_info
 
 """provdes assignment due date and completion information
 args
