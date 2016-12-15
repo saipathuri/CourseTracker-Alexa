@@ -1,4 +1,4 @@
-welcome_new_user: "Welcome to the Course Tracker. I am setting up your account now. You can add, remove, and find what assignment to work on. What would you like to do?"
+welcome_new_user: "Welcome to Course Tracker. First you need to add an assignment. Then you can tell me when you've completed it, or ask me what to study for next."
 
 welcome_returning_user: "Welcome back, how can I help you?"
 
@@ -27,3 +27,5 @@ unknown_args_non_complete: "I didn't understand which assignment to mark as not 
 unknown_args_next_name: "I didn't understand the name of the assignment to find. Please say the class name and the type of assignment."
 
 assignment_exists: "You've already added this assignment before."
+
+help: "You can add an assignment, mark an assignment as complete or incomplete, ask me what study for next, or ask me what type of assignment is coming up. Supported assignment types are test, quiz, lab, essay and homework. What can I do for you?"

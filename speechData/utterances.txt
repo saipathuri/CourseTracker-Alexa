@@ -4,6 +4,7 @@ NextAssignmentIntent what is due next
 NextAssignmentIntent what should i do next
 NextAssignmentIntent next
 NextAssignmentIntent what should I study for next
+NextAssignmentIntent what I should study for next
 
 NextTypeIntent next {Type}
 NextTypeIntent when is next {Type}
@@ -21,10 +22,16 @@ NextNameIntent when is my next {Name} {Type}
 NextNameIntent when is my next {Name} {Type} due
 NextNameIntent {Name} {Type} due
 
+AddIntent to add {Name} {Type}
+AddIntent to add {Type} {Date}
+AddIntent to add {Name} {Date}
+AddIntent to add {Name} {Type} on {Date}
+AddIntent to add {Name} {Type} for {Date}
 AddIntent add {Name} {Type}
 AddIntent add {Type} {Date}
 AddIntent add {Name} {Date}
 AddIntent add {Name} {Type} on {Date}
+AddIntent add {Name} {Type} for {Date}
 AddIntent {Name}
 AddIntent {Type}
 AddIntent {Date}
@@ -33,6 +40,12 @@ AddIntent i have an {Name} {Type} on {Date}
 AddIntent {Name} {Type} on {Date}
 AddIntent {Name} {Type} {Date}
 
+CompletedAssignmentIntent to mark {Name} {Type} as complete
+CompletedAssignmentIntent to mark {Name} {Type} as completed
+CompletedAssignmentIntent to mark {Name} {Type} as done
+CompletedAssignmentIntent to mark {Name} as complete
+CompletedAssignmentIntent to mark {Name} as completed
+CompletedAssignmentIntent to mark {Name} as done
 CompletedAssignmentIntent mark {Name} {Type} as complete
 CompletedAssignmentIntent mark {Name} {Type} as completed
 CompletedAssignmentIntent {Name} {Type} complete
@@ -46,6 +59,12 @@ CompletedAssignmentIntent {Name} completed
 CompletedAssignmentIntent mark {Name} as done
 CompletedAssignmentIntent {Name} is done
 
+NotCompletedAssignmentIntent tomark {Name} {Type} as not complete
+NotCompletedAssignmentIntent to mark {Name} {Type} as not completed
+NotCompletedAssignmentIntent to mark {Name} {Type} as not done
+NotCompletedAssignmentIntent to mark {Name} as not complete
+NotCompletedAssignmentIntent to mark {Name} as not completed
+NotCompletedAssignmentIntent to mark {Name} as not done
 NotCompletedAssignmentIntent mark {Name} {Type} as not complete
 NotCompletedAssignmentIntent mark {Name} {Type} as not completed
 NotCompletedAssignmentIntent {Name} {Type} not complete
@@ -63,6 +82,8 @@ AMAZON.StopIntent bye
 AMAZON.StopIntent done
 AMAZON.StopIntent i am done
 AMAZON.StopIntent no
+AMAZON.StopIntent no thanks
+AMAZON.StopIntent no thank you
 
 AMAZON.CancelIntent stop
 AMAZON.CancelIntent cancel
@@ -70,3 +91,8 @@ AMAZON.CancelIntent end
 AMAZON.CancelIntent never mind
 AMAZON.CancelIntent nah
 AMAZON.CancelIntent cya
+
+AMAZON.HelpIntent for help
+AMAZON.HelpIntent help
+AMAZON.HelpIntent what can i say
+AMAZON.HelpIntent what can i do

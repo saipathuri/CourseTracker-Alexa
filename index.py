@@ -22,7 +22,7 @@ def launch_skill():
     else:
         manager.create_student(userid)
 
-    return statement(welcome_msg)
+    return question(welcome_msg)
 
 @ask.intent("AddIntent", convert={'Type': str, 'Name': str, 'Date': 'date'}, mapping = {'assignment_type' : 'Type'})
 def add_assignment(assignment_type, Name, Date):
@@ -75,7 +75,7 @@ def add_assignment(assignment_type, Name, Date):
     except my_exceptions.student_does_not_exist:
         manager.create_student(userid)
         manager.add_assignment(userid, type_to_add, name_to_add +' '+ type_to_add, date_to_add)
-        return statement("You are not set up in the system. I am adding you now and adding your assignment.")
+        return response
 
     return response
 
@@ -238,6 +238,10 @@ def stop():
 @ask.intent("AMAZON.CancelIntent")
 def cancel():
     return statement(render_template('stop'))
+
+@ask.intent("AMAZON.HelpIntent")
+def help():
+    return question(render_template('help'))
 
 def isTest(name):
     test_types = ['test', 'final', 'midterm', 'mid term', 'mid-term', 'exam']

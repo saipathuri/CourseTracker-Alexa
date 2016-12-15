@@ -71,6 +71,9 @@
     },
     {
       "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
     }
   ]
 }
