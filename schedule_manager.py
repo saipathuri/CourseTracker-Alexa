@@ -229,9 +229,6 @@ def find_next_assignment(student_id, list_type):
 
 		for assignment in sorted_assignments:
 			if assignment[1][0] == False:
-				# assignment_date = assignment[1][1]
-				# assignment_date = datetime.datetime.strptime(assignment_date, '%Y-%m-%d')
-				# assignment_date = datetime.datetime.date(assignment_date)
 				if assignment[1][1] > today:
 					return assignment
 	else:
@@ -241,28 +238,7 @@ def find_next_assignment(student_id, list_type):
 			return None
 
 		for assignment in range(len(sorted_assignments)):
-			# assignment_date = sorted_assignments[assignment][1]
-			# assignment_date = datetime.datetime.strptime(assignment_date, '%Y-%m-%d')
-			# assignment_date = datetime.datetime.date(assignment_date)
 			if sorted_assignments[assignment][1] > today:
 				return sorted_assignments[assignment]
 
 	return None
-
-
-def print_user_list():
-	for i in master_list:
-		print i
-
-"""
-TESTING
-"""
-
-amazon_test_id = "amzn1.ask.account.AGNKSQ2PSWPED6TFTUA22TEJ66FZI3K4ZYBTXLQITHRYSN5N472Q7QUQM3P7TKJYVPK4JYGG3TNN74VRQITHGB7YH33ZAIVMLKGJVGLHCJ2EZDC2VA6DHB5624FSUMVHMGMROXOC7C46ZJVGAAICK7SVSUEBMF2VOKZ7ICLAMEQPAQHKRTUKIH2NTA5XRG6RO7CR2I75C7LEOTA"
-create_student(amazon_test_id)
-add_assignment(amazon_test_id, 'test', 'calculus test', date(2016, 12, 18))
-add_assignment(amazon_test_id, 'test', 'calculus test', date(2016, 12, 17))
-add_assignment(amazon_test_id, 'test', 'physics test', date(2016, 12, 20))
-add_assignment(amazon_test_id, 'test', 'history test', date(2016, 12, 25))
-add_assignment(amazon_test_id, 'test', 'mechanics test', date(2016, 12, 16))
-add_assignment(amazon_test_id, 'quiz', 'algebra test', date(2016, 12, 18))
