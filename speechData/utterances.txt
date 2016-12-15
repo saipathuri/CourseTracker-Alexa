@@ -3,6 +3,7 @@ NextAssignmentIntent next assignment
 NextAssignmentIntent what is due next
 NextAssignmentIntent what should i do next
 NextAssignmentIntent next
+NextAssignmentIntent what should I study for next
 
 NextTypeIntent next {Type}
 NextTypeIntent when is next {Type}
@@ -10,6 +11,8 @@ NextTypeIntent when next {Type}
 NextTypeIntent when is my next {Type}
 NextTypeIntent when is my next {Type} due
 NextTypeIntent {Type} due
+NextTypeIntent what {Type} should I study for next
+NextTypeIntent which {Type} should I study for next
 
 NextNameIntent next {Name} {Type}
 NextNameIntent when is next {Name} {Type}

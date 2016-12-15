@@ -152,7 +152,7 @@ def mark_complete(assignment_type, Name):
     if(manager.mark_completed(userid, assignment_name)):
         return statement("The next " + assignment_name +  " has been marked as completed")
     else:
-        return statement(assignment_name + " isn't on your schedule")
+        return statement(assignment_name + " is not on your schedule")
 
 @ask.intent("NotCompletedAssignmentIntent", convert = {"Type": str, "Name": str}, mapping = {'assignment_type' : 'Type'})
 def mark_incomplete(assignment_type, Name):

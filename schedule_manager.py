@@ -242,7 +242,8 @@ def find_next_assignment(student_id, list_type):
 			return None
 
 		for assignment in range(len(sorted_assignments)):
-			if sorted_assignments[assignment][1] > today:
-				return sorted_assignments[assignment]
+			if find_assignment(student_id, sorted_assignments[assignment][0])[0] == False:
+				if sorted_assignments[assignment][1] > today:
+					return sorted_assignments[assignment]
 
 	return None
