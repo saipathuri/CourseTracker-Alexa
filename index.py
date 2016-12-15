@@ -1,6 +1,7 @@
 import os
 import logging
 import my_exceptions
+import datetime
 from random import randint
 import schedule_manager as manager
 from flask import Flask, render_template
@@ -57,7 +58,13 @@ def add_assignment(assignment_type, Name, Date):
     
     name_to_add = session.attributes['name']
     type_to_add = session.attributes['type']
-    date_to_add = session.attributes['date']
+    # date_to_add = session.attributes['date']
+
+    # date_to_add = datetime.datetime.strptime(date_to_add, '%Y-%m-%d')
+    # date_to_add = datetime.datetime.date(date_to_add)
+
+    date_to_add = datetime.datetime.date(datetime.datetime.strptime(session.attributes['date'], '%Y-%m-%d'))
+
     text = render_template('added_assignment', name=name_to_add, type=type_to_add, date=date_to_add)
     response = statement(text)
     
@@ -67,7 +74,8 @@ def add_assignment(assignment_type, Name, Date):
         return statement(render_template('assignment_exists'))
     except my_exceptions.student_does_not_exist:
         manager.create_student(userid)
-        return statement("You are not set up in the system. I am adding you now. Please try your request again.")
+        manager.add_assignment(userid, type_to_add, name_to_add +' '+ type_to_add, date_to_add)
+        return statement("You are not set up in the system. I am adding you now and adding your assignment.")
 
     return response
 
@@ -247,4 +255,4 @@ def isEssay(name):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug = True)
+    app.run(host='0.0.0.0', port=port)

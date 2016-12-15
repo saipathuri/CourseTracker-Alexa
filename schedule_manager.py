@@ -50,7 +50,6 @@ def create_student(student_id):
 		raise my_exceptions.student_already_exists
 	else:
 		master_list[student_id] = [student_schedule, student_all_assignments]
-		print master_list
 
 """adds assignment for a student
 args
@@ -64,8 +63,6 @@ exceptions
 	assignment_already_exists: if assignment with same name and date exists for the student
 """
 def add_assignment(student_id, assignment_type, assignment_name, due_date):
-	print master_list
-	
 	if(not master_list.has_key(student_id)):
 		raise my_exceptions.student_does_not_exist
 
@@ -235,6 +232,7 @@ def find_next_assignment(student_id, list_type):
 
 		for assignment in sorted_assignments:
 			if assignment[1][0] == False:
+				print assignment[1][1], type(assignment[1][1])
 				if assignment[1][1] > today:
 					return assignment
 	else:
