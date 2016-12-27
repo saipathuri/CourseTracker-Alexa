@@ -6,6 +6,7 @@ from random import randint
 import schedule_manager as manager
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question, session, convert_errors
+import s3_manager
 
 app = Flask(__name__)
 ask = Ask(app, "/")
