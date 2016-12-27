@@ -2,6 +2,7 @@ from collections import namedtuple
 from datetime import date
 import datetime
 import my_exceptions
+import s3_manager
 
 """
 schedule is a namedtuple
@@ -50,6 +51,7 @@ def create_student(student_id):
 		raise my_exceptions.student_already_exists
 	else:
 		master_list[student_id] = [student_schedule, student_all_assignments]
+		print("student created with id: " + student_id)
 
 """adds assignment for a student
 args
@@ -77,6 +79,8 @@ def add_assignment(student_id, assignment_type, assignment_name, due_date):
 	else:
 		assignment_list[assignment_name] = due_date
 		student_all_assignments[assignment_name] = assignment_info
+		print(assignment_name + ' ' + assignment_type + ' created for ' + student_id)
+		s3_manager.save()
 
 """provdes assignment due date and completion information
 args
@@ -133,6 +137,8 @@ def mark_completed(student_id, assignment_name):
 		return False
 
 	assignment[0] = True
+	s3_manager.save()
+	print (assignment_name + ' for ' + student_id + ' marked as completed')
 	return True
 
 """marks assignment as not completed
@@ -151,6 +157,8 @@ def mark_not_completed(student_id, assignment_name):
 		return False
 
 	assignment[0] = False
+	s3_manager.save()
+	print (assignment_name + ' for ' + student_id + ' marked as not completed')
 	return True
 
 """sorts a certain dictionary by date
