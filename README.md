@@ -1,14 +1,19 @@
-#CourseTracker for Alexa Devices
-##Description
+# CourseTracker for Alexa Devices
+
+## Description
 The service runs on Flask with help from Flask-Ask.
 
-##Setup
+## Setup
+
 Run 
+
 `pip install -r requirements.txt`
 
 Starting the server: `python index.py`
 
-##Usage Examples (see sample utterances)
+## Usage Examples (see sample utterances)
+
+
 Start CourseTracker
 
 Ask CourseTracker to a {Course Name} {Assignment Type} on {Date}
